@@ -14,9 +14,7 @@ function App() {
       text: "Todo from Add button",
       id: nanoid()
     }
-    setTodo(prevTodo => [...prevTodo, task])
-    console.log(todo.length)
-    console.log(todo)
+    setTodo(prevTodo => [task, ...prevTodo])
   }
 
 
