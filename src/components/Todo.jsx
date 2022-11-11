@@ -2,14 +2,61 @@ import React from 'react';
 
 export default function Todo(props) {
 
+    const [value, setValue] = React.useState();
+    const [editingValue, setEditingValue] = React.useState(value);
+
+    const onChange = (event) => {
+        setEditingValue(event.target.value);
+    }
+
+    const onKeyDown = (event) => {
+        if (event.key === "Enter" || event.key === "Escape") {
+        event.target.blur();
+        }
+    };
+
+    const onBlur = (event) => {
+        if (event.target.value.trim() === "") {
+        setEditingValue(value);
+        } else {
+        setValue(event.target.value);
+        }
+    };
+
+    const onInput = (target) => {
+        if (target.scrollHeight > 33) {
+        target.style.height = "24px";
+        target.style.height = target.scrollHeight - 8 + "px";
+        }
+    };
+
+    // const textareaRef = React.useRef();
+
+    // React.useEffect(() => {
+    //     onInput(textareaRef.current);
+    // }, [onInput, textareaRef]);
+ 
+
    
    const tasks = props.data.map((task) => {
+
     return (
         <div className='rounded overflow-hidden shadow-md my-1' key={task.id}>
             <div className='flex items-center text-center'>
                 <input type="checkbox" name="" id="" className='default:ring-2 mx-4 lg:mx-4 '/>
                 <div className='w-auto my-4 pr-4 lg:px-4 lg:pr-0'>
-                    <p className='text-base text-left lg:w-[36rem]'>{task.text} {task.id} bhabjcabcjacjb</p>
+                    <textarea
+                        className='resize-none overflow-hidden min-h-[24px] max-h-[100px] hover:cursor-pointer text-base text-left mr-16 lg:w-[36rem] lg:mr-0'
+                        rows={1}
+                        aria-label="Todo"
+                        value={editingValue}
+                        onBlur={onBlur}
+                        onChange={onChange}
+                        onKeyDown={onKeyDown}
+                        onInput={(event) => onInput(event.target)}
+                        // ref={textareaRef}
+                        placeholder="Start typing here to add todo(s)"
+                    />
                 </div>
                 <div className='items-end ml-0 mr-4 lg:ml-[14rem] hover:text-red-500 hover:cursor-pointer'>
                     <svg className="w-5 h-5 mb-1" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">

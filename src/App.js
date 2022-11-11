@@ -11,7 +11,7 @@ function App() {
   function addTodo(){
     let task = {
       isCompleted: false,
-      text: "Todo from Add button",
+      text: "",
       id: nanoid()
     }
     setTodo(prevTodo => [task, ...prevTodo])
