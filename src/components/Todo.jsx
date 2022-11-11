@@ -44,9 +44,9 @@ export default function Todo(props) {
         <div className='rounded overflow-hidden shadow-md my-1' key={task.id}>
             <div className='flex items-center text-center'>
                 <input type="checkbox" name="" id="" className='default:ring-2 mx-4 lg:mx-4 '/>
-                <div className='w-auto my-4 pr-4 lg:px-4 lg:pr-0'>
+                <div className='w-auto my-4 pr-4 lg:px-2 lg:pr-0'>
                     <textarea
-                        className='resize-none overflow-hidden min-h-[24px] max-h-[100px] hover:cursor-pointer text-base text-left mr-16 lg:w-[36rem] lg:mr-0'
+                        className='resize-none overflow-hidden min-h-[24px] max-h-[100px] hover:cursor-pointer text-base text-left mr-24 lg:w-[36rem] lg:mr-0 md:mr-[28rem]'
                         rows={1}
                         aria-label="Todo"
                         value={editingValue}
@@ -55,7 +55,7 @@ export default function Todo(props) {
                         onKeyDown={onKeyDown}
                         onInput={(event) => onInput(event.target)}
                         // ref={textareaRef}
-                        placeholder="Start typing here to add todo(s)"
+                        placeholder="e.g Grocery shopping"
                     />
                 </div>
                 <div className='items-end ml-0 mr-4 lg:ml-[14rem] hover:text-red-500 hover:cursor-pointer'>
